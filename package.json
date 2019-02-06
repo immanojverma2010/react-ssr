@@ -1,0 +1,48 @@
+{
+  "name": "react-ssr-base",
+  "version": "1.0.0",
+  "description": "react server side rendering with Router 4 and later we will add Redux to this",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --kill-others \"npm run start:bundle\" \"npm run start:server\"",
+    "start:bundle": "webpack -w",
+    "start:server": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Manoj",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ],
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.12.5",
+    "source-map-loader": "^0.2.4",
+    "webpack": "^3.10.0",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "isomorphic-fetch": "^2.2.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^6.0.0",
+    "react-router-config": "^4.4.0-beta.6",
+    "react-router-dom": "^4.2.2",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "serialize-javascript": "^1.4.0"
+  }
+}
