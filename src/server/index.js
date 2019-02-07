@@ -24,9 +24,7 @@ app.listen(port, () => {
     console.log(`Server is listening on port: ${port}`)
 })
 function handleRender(req, res, next) {
-
     const store = createStore(reducers, initialState, applyMiddleware(thunk));
-
     const branch = matchRoutes(routes, req.url);
     console.log("branch.length,req.url  %o", branch.length, req.url);
     const promises = branch.map(({ route }) => {
@@ -60,7 +58,7 @@ function renderFullPage(html, preloadedState) {
         <title>SSR with RR</title>  
         <link rel="shortcut icon" href="#" />
         <script src="/bundle.js" defer></script>      
-        <script>
+        <script id="redux-state">
           // WARNING: See the following for security issues around embedding JSON in HTML:
           // http://redux.js.org/recipes/ServerRendering.html#security-considerations
           window.__PRELOADED_STATE__ = ${serialize(preloadedState)}

@@ -12,10 +12,17 @@ import routes from '../shared/routes';
 import reducers from '../shared/api';
 
 // Grab the state from a global variable injected into the server-generated HTML
-const preloadedState = window.__PRELOADED_STATE__
-debugger;
-// Allow the passed state to be garbage-collected
-delete window.__PRELOADED_STATE__
+let preloadedState = {}
+
+if (window) {
+    preloadedState = window.__PRELOADED_STATE__
+    // Allow the passed state to be garbage-collected
+    delete window.__PRELOADED_STATE__
+    let reduxStateElem = document.querySelector("#redux-state")
+    if (reduxStateElem) {
+        reduxStateElem.remove();
+    }
+}
 
 // Create Redux store with initial state
 const store = createStore(
